@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Card Game</title>
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+		<meta name="msapplication-TileColor" content="#000000">
+		<meta name="theme-color" content="#ffffff">
+		<script src="./game.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<span class="headerTitle">Card Game</span>
+			<span class="headerContentRight">
+				<a class="headerButton">Bet Life Savings</a>
+				<a class="headerButton">Rules</a>
+			</span>
+		</header>
+		<div class="loadingCover" id="loadingCoverHolder">
+			<div>
+				<img src="./src/assets/SVG/CardIcon.svg" alt="Card Game Icon" class="spinningCardGameIcon" />
+				<span class="loadingCoverTitle">Card Game</span>
+				<span class="loadingCoverLoadingText">Loading...</span>
+			</div>
+		</div>
+		<div class="popupScreen" id="signInScreen">
+			<div class="popupScreenHeader">
+				<a class="popupScreenBackButton" onclick="toggleSignIn();">
+					<span class="material-icons popupScreenBack">arrow_back</span>
+				</a>
+				<span class="popupScreenTitle">Sign In</span>
+			</div>
+			<div class="popupScreenInner">
+				<div class="signInWindowHolder">
+					<span class="playerFlair p2">Player 2</span>
+					<div class="textInputForm">
+						<span class="textInputFormTitle">Email</span>
+						<input type="text" class="textInput" id="emailInput" />
+					</div>
+					<div class="textInputForm">
+						<span class="textInputFormTitle">Password</span>
+						<input type="password" class="textInput" id="passwordInput" />
+					</div>
+					<div class="textInputForm">
+						<span class="textInputFormTitle">Display Name</span>
+						<input type="text" class="textInput" id="displayNameInput" />
+					</div>
+					<div class="signInScreenErrorHolder" style="display: none;">
+						<span class="signInScreenError">Incorrect password, please try again</span>
+					</div>
+					<a class="iconButton" onclick="addPlayer();">
+						<span class="iconButtonText">Sign In</span>
+						<span class="material-icons iconButtonIcon">login</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<main>
+			<span class="resultPill good-primary">Winning</span>
+			<span class="resultPill good-secondary">3/5 Won</span>
+			<br>
+			<br>
+			<span class="resultPill bad-primary">Losing</span>
+			<span class="resultPill bad-secondary">2/5 Won</span>
+			<br>
+			<br>
+			<span class="currentPlayerOuter">
+				<span class="currentPlayerInner p1">
+					<span class="currentPlayerDisplayName">Player 1</span>
+					<span class="currentPlayerRecogName"></span>
+				</span>
+				<a class="currentPlayerLogoutButton">
+					<span class="material-icons currentPlayerLogoutIcon p1">logout</span>
+					<span class="tooltipContainer">
+						<span class="tooltip">Logout</span>
+					</span>
+				</a>
+			</span>
+			<span class="currentPlayerOuter">
+				<span class="currentPlayerInner p2">
+					<span class="currentPlayerDisplayName">Player 2</span>
+					<span class="currentPlayerRecogName"></span>
+				</span>
+				<a class="currentPlayerLogoutButton">
+					<span class="material-icons currentPlayerLogoutIcon p2">logout</span>
+					<span class="tooltipContainer">
+						<span class="tooltip">Logout</span>
+					</span>
+				</a>
+			</span>
+			<br>
+			<span class="currentCardNumber black">
+				<span class="tooltip">Last Card</span>
+				<span>10</span>
+			</span>
+			<span class="currentCardNumber red">
+				<span class="tooltip">Last Card</span>
+				<span>6</span>
+			</span>
+			<span class="currentCardNumber yellow">
+				<span class="tooltip">Last Card</span>
+				<span>3</span>
+			</span>
+			<span class="currentCardNumber waiting">
+				<span class="tooltip">Last Card</span>
+				<span>?</span>
+			</span>
+			<br>
+			<br>
+			<a onclick="toggleSignIn();">Show Sign-In</a>
+		</main>
+	</body>
+</html>

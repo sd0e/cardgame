@@ -1,0 +1,753 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+* {
+	font-family: 'Inter', sans-serif;
+}
+
+header {
+	padding: 2rem 3rem;
+	border-bottom: 0.75pt #cccccc solid;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+.headerTitle {
+	font-weight: 600;
+	font-size: 1.5rem;
+	color: #202020;
+}
+
+.headerButton {
+	display: inline-block;
+	font-weight: 600;
+	color: #f2f2f2;
+	background-color: #b3b3b3;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	padding: 0.5rem 1rem;
+	margin-left: 0.8rem;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+
+.headerButton:hover {
+	filter: opacity(0.8);
+	transform: scale(0.95);
+}
+
+.resultPill {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+	color: #f2f2f2;
+	padding: 0.8rem 1.5rem;
+	border-radius: 2rem;
+	display: inline-block;
+	font-weight: 600;
+	transition: 0.1s ease-in-out;
+	margin-right: 1rem;
+}
+
+.resultPill:hover {
+	transform: scale(1.05);
+}
+
+.good.primary {
+	background-color: #24AA54;
+}
+
+.good.secondary {
+	background-color: #298447;
+}
+
+.neutral.primary {
+	background-color: #a5a5a5;
+}
+
+.neutral.secondary {
+	background-color: #9e9e9e;
+}
+
+.bad.primary {
+	background-color: #D12626;
+}
+
+.bad.secondary {
+	background-color: #991313;
+}
+
+.topContentHolder {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 1.5rem;
+}
+
+.currentPlayerOuter {
+	display: block;
+	background-color: #ffffff;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	width: 16rem;
+	height: 6.5rem;
+	border-radius: 1.2rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.currentPlayerInner {
+	display: block;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	width: 9rem;
+	height: 3.5rem;
+	border-radius: 1.2rem;
+	padding: 1.5rem;
+	transition: 0.1s ease-in-out;
+}
+
+.currentPlayerInner:hover {
+	width: 12rem;
+}
+
+.currentPlayerInner.p1 {
+	background-color: #536EC1;
+	text-align: left;
+}
+
+.currentPlayerInner.p2 {
+	background-color: #24AA54;
+	text-align: right;
+}
+
+.currentPlayerDisplayName {
+	color: #F2F2F2;
+	font-weight: 600;
+	display: block;
+	font-size: 1.4rem;
+	margin-bottom: 0.75rem;
+}
+
+.currentPlayerRecogName {
+	color: #F2F2F2;
+	font-weight: 400;
+	display: block;
+	filter: opacity(0.8);
+	font-size: 0.9rem;
+}
+
+.currentPlayerLogoutButton {
+	width: 4rem;
+	display: flex;
+	align-self: center;
+	align-content: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+
+.currentPlayerLogoutButton:hover {
+	width: 5rem;
+}
+
+.currentPlayerLogoutButton:hover .tooltip {
+	display: block;
+	left: 2rem;
+}
+
+.material-icons.currentPlayerLogoutIcon.p1 {
+	color: #536EC1;
+}
+
+.material-icons.currentPlayerLogoutIcon.p2 {
+	color: #24AA54;
+}
+
+.currentCardNumber {
+	display: inline-flex;
+	padding: 1.5rem;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	height: 3.5rem;
+	border-radius: 1.2rem;
+	font-size: 3rem;
+	font-weight: 400;
+	align-items: center;
+	width: 3.5rem;
+	justify-content: center;
+	transition: 0.1s ease-in-out;
+}
+
+.currentCardNumber.p1 {
+	margin-left: 3rem;
+}
+
+.currentCardNumber.p2 {
+	margin-right: 3rem;
+}
+
+.currentCardNumber:hover {
+	transform: scale(1.05);
+}
+
+.currentCardNumber.scaleup {
+	transform: scale(1.2);
+}
+
+main {
+	padding: 3rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.currentCardNumber.black {
+	color: #FFFFFF;
+	background-color: #1E1E1E;
+}
+
+.currentCardNumber.red {
+	color: #FFFFFF;
+	background-color: #DD3A3A;
+}
+
+.currentCardNumber.yellow {
+	color: #FFFFFF;
+	background-color: #F7BD01;
+}
+
+.currentCardNumber.waiting {
+	color: rgba(26, 26, 26, 0.6);
+	background-color: #FFFFFF;
+}
+
+.tooltipContainer {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tooltip {
+	padding: 0.5rem 0.8rem;
+	border-radius: 0.7rem;
+	background-color: rgba(26, 26, 26, 0.8);
+	color: #F2F2F2;
+	font-size: 1rem;
+	font-weight: 600;
+	display: none;
+	z-index: 3;
+	position: absolute;
+}
+
+.currentCardNumber:hover .tooltip {
+	display: block;
+	top: 7.5rem;
+}
+
+.spinningCardGameIcon {
+	width: 20rem;
+	height: 20rem;
+	animation: spinningIcon 2s ease-in-out infinite;
+}
+
+@keyframes spinningIcon {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingCover {
+	display: flex;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	align-items: center;
+	justify-content: center;
+	background-color: #FFFFFF;
+}
+
+.loadingCover.hidden {
+	animation: hideLoading 0.8s ease-in-out forwards;
+}
+
+@keyframes hideLoading {
+	0% {
+		top: 0rem;
+		display: flex;
+	}
+
+	100% {
+		top: -100%;
+		display: none;
+	}
+}
+
+.loadingCoverTitle {
+	color: #1E1E1E;
+	font-weight: 600;
+	display: block;
+	font-size: 2.2rem;
+	text-align: center;
+	filter: opacity(0.8);
+	margin-top: 4.5rem;
+}
+
+.loadingCoverLoadingText {
+	color: #1E1E1E;
+	font-weight: 400;
+	display: block;
+	font-size: 1rem;
+	text-align: center;
+	filter: opacity(0.6);
+	margin-top: 1.5rem;
+}
+
+.popupScreen {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	right: 0;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	align-items: center;
+	justify-content: center;
+	background-color: #FFFFFF;
+	padding: 3rem;
+}
+
+.popupScreen.shown {
+	display: block;
+	animation: showSignIn 0.8s ease-in-out forwards;
+}
+
+@keyframes showSignIn {
+	0% {
+		left: 100%;
+	}
+
+	100% {
+		left: 0;
+	}
+}
+
+.popupScreen.hidden {
+	display: block;
+	animation: hideSignIn 0.8s ease-in-out forwards;
+}
+
+@keyframes hideSignIn {
+	0% {
+		left: 0;
+		display: block;
+	}
+
+	100% {
+		left: 100%;
+		display: none;
+	}
+}
+
+.popupScreenBackButton {
+	text-decoration: none;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+
+.popupScreenBackButton:hover {
+	filter: opacity(0.8);
+}
+
+.popupScreenBackButton:hover .tooltip {
+	display: block;
+	left: 2rem;
+}
+
+.material-icons.popupScreenBack {
+	color: rgba(30, 30, 30, 0.6);
+	font-size: 2rem;
+	line-height: 2rem;
+	vertical-align: middle;
+	transition: 0.1s ease-in-out;
+}
+
+.material-icons.popupScreenBack:hover {
+	transform: scale(1.1);
+}
+
+.popupScreenHeader {
+	line-height: 2rem;
+	vertical-align: middle;
+}
+
+.popupScreenTitle {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	vertical-align: middle;
+	margin-left: 1.5rem;
+	font-weight: 500;
+	color: rgba(30, 30, 30, 1);
+}
+
+.popupScreenInner {
+	margin-top: 3rem;
+}
+
+.signInWindowHolder {
+	display: inline-block;
+	padding: 2rem;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	background-color: #FFFFFF;
+	border-radius: 1rem;
+}
+
+.playerFlair {
+	display: inline-block;
+	padding: 0.4rem 0.7rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #F2F2F2;
+	border-radius: 0.3rem;
+	margin-bottom: 0.5rem;
+}
+
+.playerFlair.p1 {
+	background-color: #536EC1;
+}
+
+.playerFlair.p2 {
+	background-color: #24AA54;
+}
+
+.textInputForm {
+	margin-top: 1.5rem;
+}
+
+.textInputFormTitle {
+	display: block;
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.textInput {
+	margin-top: 1rem;
+	padding: 1rem 1.5rem;
+	border: none;
+	border-radius: 0.4rem;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	color: rgb(53, 53, 53);
+	width: 20rem;
+	transition: 0.1s ease-in-out;
+}
+
+.textInput:focus {
+	outline: none;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.textInput:hover {
+	transform: scale(1.05);
+}
+
+.signInScreenErrorHolder {
+	display: block;
+	margin-top: 1.5rem;
+}
+
+.signInScreenError {
+	display: inline-block;
+	font-weight: 500;
+	color: #FFFFFF;
+	background-color: #DD3A3A;
+	padding: 0.5rem 0.7rem;
+	border-radius: 0.4rem;
+	font-size: 0.8rem;
+}
+
+.iconButton {
+	display: inline-block;
+	float: right;
+	padding: 0.5rem 0.7rem;
+	background-color: #B3B3B3;
+	color: #F2F2F2;
+	line-height: 1.2rem;
+	vertical-align: middle;
+	border-radius: 0.4rem;
+	margin-top: 1.5rem;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+
+.iconButton:hover {
+	transform: scale(1.05);
+}
+
+.iconButtonText {
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	vertical-align: middle;
+}
+
+.material-icons.iconButtonIcon {
+	font-size: 1.2rem;
+	line-height: 1.2rem;
+	vertical-align: middle;
+}
+
+.subcontentHolder {
+	background-color: #FFFFFF;
+	margin-top: 1.5rem;
+	display: block;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	padding: 1.5rem;
+	border-radius: 1rem;
+}
+
+.subcontentHolder.hidden, #belowCards.hidden, #player1LastCard.hidden, #player2LastCard.hidden, #gameCards.hidden {
+	display: none;
+}
+
+.subcontentHolderTitle {
+	display: block;
+	font-weight: 650;
+	margin-bottom: 2rem;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 1.35rem;
+}
+
+.gameCard {
+	position: absolute;
+	width: 25rem;
+	height: 38rem;
+	z-index: 2;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+}
+
+.gameCard:hover {
+	animation: rock 1.6s;
+}
+
+.gameCard:focus .gameCardInner {
+	transform: rotateY(180deg);
+}
+
+@keyframes rock {
+	0% {
+		transform: rotateZ(0deg);
+	}
+
+	25% {
+		transform: rotateZ(4deg);
+	}
+
+	75% {
+		transform: rotateZ(-4deg);
+	}
+
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+
+.gameCard.back {
+	z-index: 0;
+	position: absolute;
+	transform: rotate(3deg);
+}
+
+.gameCard.middle {
+	z-index: 1;
+	position: absolute;
+	transform: rotate(-3deg);
+}
+
+.gameCardInner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 1rem;
+	background-color: #FFFFFF;
+}
+
+.cardBack {
+	transform: rotateY(180deg);
+	padding: 3rem;
+	width: calc(100% - 6rem);
+	height: calc(100% - 6rem);
+	border-radius: 1rem;
+	position: relative;
+}
+
+.cardBack.black {
+	color: #FFFFFF;
+	background-color: #1E1E1E;
+}
+
+.cardBack.red {
+	color: #FFFFFF;
+	background-color: #DD3A3A;
+}
+
+.cardBack.yellow {
+	color: #FFFFFF;
+	background-color: #F7BD01;
+}
+
+.cardNumber {
+	font-weight: 400;
+	font-size: 8rem;
+	display: block;
+	text-align: left;
+}
+
+.cardGameTextBack {
+	display: block;
+	font-size: 1.3rem;
+	font-weight: 700;
+	position: absolute;
+	bottom: 3rem;
+	right: 3rem;
+}
+
+.cardFront {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cardBack, .cardFront {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.cardBackText {
+	font-size: 3rem;
+	font-weight: 600;
+	color: #333333;
+	display: block;
+	text-align: center;
+}
+
+.cardBackSubtext {
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: rgba(51, 51, 51, 0.6);
+	display: block;
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.gameCards {
+	height: 41rem;
+	display: flex;
+	justify-content: center;
+}
+
+.cardsRemainingCounter {
+	display: inline-block;
+	background-color: #778EBF;
+	color: #F2F2F2;
+	border-radius: 1.5rem;
+	padding: 0.5rem 1rem;
+	font-weight: 600;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	transition: 0.1s ease-in-out;
+	font-size: 0.9rem;
+}
+
+.cardsRemainingCounter:hover {
+	transform: scale(1.05);
+}
+
+.currentTurnTitle {
+	display: block;
+	font-size: 0.8rem;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: 500;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.middle {
+	text-align: center;
+}
+
+.currentTurn {
+	display: inline-block;
+	color: #F2F2F2;
+	background-color: #1E1E1E;
+	border-radius: 1.5rem;
+	padding: 0.5rem 1.2rem;
+	font-weight: 600;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	transition: 0.1s ease-in-out;
+	font-size: 1rem;
+}
+
+.currentTurn:hover {
+	transform: scale(1.05);
+}
+
+.currentTurn.p1 {
+	background-color: #536EC1;
+}
+
+.currentTurn.p2 {
+	background-color: #24AA54;
+}

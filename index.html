@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Card Game</title>
+	<link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="theme-color" content="#ffffff">
+	<script src="./game.js" defer></script>
+</head>
+
+<body>
+	<header>
+		<span class="headerTitle">Card Game</span>
+		<span class="headerContentRight">
+			<a class="headerButton" tabindex="0" type="button" href="#" onclick="alert('Rules');">Rules</a>
+		</span>
+	</header>
+	<div class="loadingCover" id="loadingCoverHolder">
+		<div>
+			<img src="./src/assets/SVG/CardIcon.svg" alt="Card Game Icon" class="spinningCardGameIcon" />
+			<span class="loadingCoverTitle">Card Game</span>
+			<span class="loadingCoverLoadingText">Loading...</span>
+		</div>
+	</div>
+	<div class="popupScreen" id="signInScreen">
+		<div class="popupScreenHeader">
+			<a class="popupScreenBackButton" onclick="toggleSignIn();" tabindex="0" type="button" href="#">
+				<span class="material-icons popupScreenBack">arrow_back</span>
+			</a>
+			<span class="popupScreenTitle">Sign In</span>
+		</div>
+		<div class="popupScreenInner">
+			<div class="signInWindowHolder">
+				<span class="playerFlair p1" id="signInWindowPlayerString">Player 1</span>
+				<div class="textInputForm">
+					<span class="textInputFormTitle">Email</span>
+					<input type="text" class="textInput" id="emailInput" autocapitalize="off" autocomplete="false" spellcheck="false" />
+				</div>
+				<div class="textInputForm">
+					<span class="textInputFormTitle">Password</span>
+					<input type="password" class="textInput" id="passwordInput" autocapitalize="off" autocomplete="false" spellcheck="false" />
+				</div>
+				<div class="textInputForm">
+					<span class="textInputFormTitle">Display Name</span>
+					<input type="text" class="textInput" id="displayNameInput" autocomplete="off" autocapitalize="off" autocomplete="false" spellcheck="false" />
+				</div>
+				<div class="signInScreenErrorHolder" style="display: none;" id="passwordError">
+					<span class="signInScreenError">Incorrect username or password, please try again</span>
+				</div>
+				<a class="iconButton" onclick="addPlayer();" tabindex="0" type="button" href="#">
+					<span class="iconButtonText">Sign In</span>
+					<span class="material-icons iconButtonIcon">login</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<main>
+		<div class="leftSide">
+			<div class="topContentHolder">
+				<span class="currentPlayerOuter">
+					<span class="currentPlayerInner p1">
+						<span class="currentPlayerDisplayName">Player 1</span>
+						<span class="currentPlayerRecogName" id="player1DisplayName"></span>
+					</span>
+					<a class="currentPlayerLogoutButton" id="player1ChangeStateButton" tabindex="0" type="button" href="#">
+						<span class="material-icons currentPlayerLogoutIcon p1"
+							id="player1ChangeStateIcon">logout</span>
+						<span class="tooltipContainer">
+							<span class="tooltip" id="player1ChangeStateText">Logout</span>
+						</span>
+					</a>
+				</span>
+				<span class="currentCardNumber waiting p1" id="player1LastCard">
+					<span class="tooltip">Last Card</span>
+					<span id="player1LastCardNumber">?</span>
+				</span>
+			</div>
+			<div class="subcontentHolder">
+				<span class="subcontentHolderTitle">This Round</span>
+				<span class="resultPill neutral primary" id="player1ThisRoundPrimary">Drawing</span>
+				<span class="resultPill neutral secondary" id="player1ThisRoundSecondary"><span id="player1CardsThisRound">0</span>/<span class="totalCardsThisRound">0</span> Cards</span>
+			</div>
+			<div class="subcontentHolder" class="lastRoundHolder">
+				<span class="subcontentHolderTitle">Last Round</span>
+				<span class="resultPill bad primary" id="player1LastRoundPrimary">Lost</span>
+				<span class="resultPill bad secondary" id="player1LastRoundSecondary"><span id="player1LastRoundSecondaryCardNum">0</span>/30 Cards</span>
+			</div>
+			<div class="subcontentHolder" class="lastRoundHolder">
+				<span class="subcontentHolderTitle">Overall</span>
+				<span class="resultPill neutral primary">Drawing</span>
+				<span class="resultPill neutral secondary">0/0 Won</span>
+			</div>
+		</div>
+		<div class="middle">
+			<span id="bothPlayers" style="display: none;">Both players must be signed in to play.</span>
+			<div class="gameCards" id="gameCards">
+				<div class="gameCard back">
+					<div class="gameCardInner">
+						<div class="cardFront">
+							<div>
+								<span class="cardBackText">CG</span>
+								<span class="cardBackSubtext">Click to flip</span>
+							</div>
+						</div>
+						<div class="cardBack"></div>
+					</div>
+				</div>
+				<div class="gameCard middle">
+					<div class="gameCardInner">
+						<div class="cardFront">
+							<div>
+								<span class="cardBackText">CG</span>
+								<span class="cardBackSubtext">Click to flip</span>
+							</div>
+						</div>
+						<div class="cardBack"></div>
+					</div>
+				</div>
+				<div class="gameCard" tabindex="1" id="topGameCard">
+					<div class="gameCardInner">
+						<div class="cardFront">
+							<div>
+								<span class="cardBackText">CG</span>
+								<span class="cardBackSubtext">Click to flip</span>
+							</div>
+						</div>
+						<div class="cardBack yellow" id="topGameCardBack">
+							<span class="cardNumber" id="topGameCardNumber">3</span>
+							<span class="cardGameTextBack">CG</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="belowCards">
+				<span class="cardsRemainingCounter" id="cardsRemainingCounter">30 Left</span>
+				<span class="currentTurnTitle">Current Turn</span>
+				<span class="currentTurn p1" id="currentPlayer">Player 1</span>
+			</div>
+		</div>
+		<div class="right">
+			<div class="topContentHolder">
+				<span class="currentCardNumber waiting p2" id="player2LastCard">
+					<span class="tooltip">Last Card</span>
+					<span id="player2LastCardNumber">?</span>
+				</span>
+				<span class="currentPlayerOuter">
+					<span class="currentPlayerInner p2">
+						<span class="currentPlayerDisplayName">Player 2</span>
+						<span class="currentPlayerRecogName" id="player2DisplayName"></span>
+					</span>
+					<a class="currentPlayerLogoutButton" id="player2ChangeStateButton" tabindex="0" type="button" href="#">
+						<span class="material-icons currentPlayerLogoutIcon p2"
+							id="player2ChangeStateIcon">logout</span>
+						<span class="tooltipContainer">
+							<span class="tooltip" id="player2ChangeStateText">Logout</span>
+						</span>
+					</a>
+				</span>
+			</div>
+			<div class="subcontentHolder">
+				<span class="subcontentHolderTitle">This Round</span>
+				<span class="resultPill neutral primary" id="player2ThisRoundPrimary">Drawing</span>
+				<span class="resultPill neutral secondary" id="player2ThisRoundSecondary"><span id="player2CardsThisRound">0</span>/<span class="totalCardsThisRound">0</span> Cards</span>
+			</div>
+			<div class="subcontentHolder" class="lastRoundHolder">
+				<span class="subcontentHolderTitle">Last Round</span>
+				<span class="resultPill good primary" id="player2LastRoundPrimary">Won</span>
+				<span class="resultPill good secondary" id="player2LastRoundSecondary"><span id="player2LastRoundSecondaryCardNum">0</span>/30 Cards</span>
+			</div>
+			<div class="subcontentHolder" class="lastRoundHolder">
+				<span class="subcontentHolderTitle">Overall</span>
+				<span class="resultPill neutral primary">Drawing</span>
+				<span class="resultPill neutral secondary">0/0 Won</span>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>
