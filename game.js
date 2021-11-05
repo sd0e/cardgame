@@ -373,6 +373,8 @@ const toggleSignIn = (force, playerString) => {
 const passwordMatches = async (email, password) => {
 	const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
 
+	await firebase.auth().signOut();
+
 	if (userCredential) return true;
 	return false;
 	// for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
@@ -383,7 +385,7 @@ const passwordMatches = async (email, password) => {
 	// return false;
 }
 
-const addPlayer = () => {
+const addPlayer = async () => {
 	const usernameElement = document.getElementById('emailInput');
 	const passwordElement = document.getElementById('passwordInput');
 	const displayNameElement = document.getElementById('displayNameInput');
