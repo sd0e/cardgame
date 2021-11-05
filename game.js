@@ -377,8 +377,8 @@ const passwordMatches = async (email, password) => {
 	await firebase.auth().signOut();
 	console.log(`Signed out`);
 
-	if (userCredential) return true;
-	return false;
+	if (userCredential) resolve(true);
+	else resolve(false);
 	// for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
 	// 	const playerArray = players[playerIdx]
 	// 	if (playerArray[0] === email && playerArray[1] === password) return true;
@@ -394,24 +394,24 @@ const addPlayer = async () => {
 
 	console.log(`Awaiting password`);
 
-	const passwordMatches = await passwordMatches(usernameElement.value, passwordElement.value);
+	passwordMatches(usernameElement.value, passwordElement.value).then(passwordMatches => {
+		console.log(`passwordMatches: ${passwordMatches}`);
 
-	console.log(`passwordMatches: ${passwordMatches}`);
+		if (passwordMatches) {
+			// Password is correct
+			const playerString = document.getElementById('signInWindowPlayerString').innerText;
 
-	if (passwordMatches) {
-		// Password is correct
-		const playerString = document.getElementById('signInWindowPlayerString').innerText;
+			const arrayToSet = JSON.stringify([usernameElement.value, displayNameElement.value]);
 
-		const arrayToSet = JSON.stringify([usernameElement.value, displayNameElement.value]);
+			// Sets the value of either player1 or player2 depending on who is being signed in using a conditional (ternary) operator
+			localStorage.setItem(playerString === 'Player 1' ? 'player1' : 'player2', arrayToSet);
 
-		// Sets the value of either player1 or player2 depending on who is being signed in using a conditional (ternary) operator
-		localStorage.setItem(playerString === 'Player 1' ? 'player1' : 'player2', arrayToSet);
-
-		toggleSignIn('close');
-		checkSignInStatus();
-	} else {
-		document.getElementById('passwordError').style.display = 'block';
-	}
+			toggleSignIn('close');
+			checkSignInStatus();
+		} else {
+			document.getElementById('passwordError').style.display = 'block';
+		}
+	});
 }
 
 const playerRelativeScoreClass = (playerYouWant, playerToCompareTo) => {
