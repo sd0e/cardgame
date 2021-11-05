@@ -13,30 +13,30 @@ let playerCards = {
 	'p2': []
 };
 
-// Defines a list of user emails and passwords
-// (this is not intended to be secure and is a test)
-const players = [
-	["player1@sebdoe.com", "12345678"],
-	["player2@sebdoe.com", "12345678"],
-	["player3@sebdoe.com", "12345678"],
-	["player4@sebdoe.com", "12345678"],
-	["player5@sebdoe.com", "12345678"],
-	["player6@sebdoe.com", "12345678"],
-	["player7@sebdoe.com", "12345678"],
-	["player8@sebdoe.com", "12345678"],
-	["player9@sebdoe.com", "12345678"],
-	["player10@sebdoe.com", "12345678"],
-	["player11@sebdoe.com", "12345678"],
-	["player12@sebdoe.com", "12345678"],
-	["player13@sebdoe.com", "12345678"],
-	["player14@sebdoe.com", "12345678"],
-	["player15@sebdoe.com", "12345678"],
-	["player16@sebdoe.com", "12345678"],
-	["player17@sebdoe.com", "12345678"],
-	["player18@sebdoe.com", "12345678"],
-	["player19@sebdoe.com", "12345678"],
-	["player20@sebdoe.com", "12345678"]
-];
+// // Defines a list of user emails and passwords
+// // (this is not intended to be secure and is a test)
+// const players = [
+// 	["player1@sebdoe.com", "12345678"],
+// 	["player2@sebdoe.com", "12345678"],
+// 	["player3@sebdoe.com", "12345678"],
+// 	["player4@sebdoe.com", "12345678"],
+// 	["player5@sebdoe.com", "12345678"],
+// 	["player6@sebdoe.com", "12345678"],
+// 	["player7@sebdoe.com", "12345678"],
+// 	["player8@sebdoe.com", "12345678"],
+// 	["player9@sebdoe.com", "12345678"],
+// 	["player10@sebdoe.com", "12345678"],
+// 	["player11@sebdoe.com", "12345678"],
+// 	["player12@sebdoe.com", "12345678"],
+// 	["player13@sebdoe.com", "12345678"],
+// 	["player14@sebdoe.com", "12345678"],
+// 	["player15@sebdoe.com", "12345678"],
+// 	["player16@sebdoe.com", "12345678"],
+// 	["player17@sebdoe.com", "12345678"],
+// 	["player18@sebdoe.com", "12345678"],
+// 	["player19@sebdoe.com", "12345678"],
+// 	["player20@sebdoe.com", "12345678"]
+// ];
 
 // Shuffles the array based on the Fisher-Yates Shuffle
 const shuffle = array => {
@@ -370,13 +370,17 @@ const toggleSignIn = (force, playerString) => {
 }
 
 // Checks if a username and password combination matches the records
-const passwordMatches = (email, password) => {
-	for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
-		const playerArray = players[playerIdx]
-		if (playerArray[0] === email && playerArray[1] === password) return true;
-	}
-	// Would have returned before this point if it matched
+const passwordMatches = async (email, password) => {
+	const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+
+	if (userCredential) return true;
 	return false;
+	// for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
+	// 	const playerArray = players[playerIdx]
+	// 	if (playerArray[0] === email && playerArray[1] === password) return true;
+	// }
+	// // Would have returned before this point if it matched
+	// return false;
 }
 
 const addPlayer = () => {
@@ -384,7 +388,9 @@ const addPlayer = () => {
 	const passwordElement = document.getElementById('passwordInput');
 	const displayNameElement = document.getElementById('displayNameInput');
 
-	if (passwordMatches(usernameElement.value, passwordElement.value)) {
+	const passwordMatches = await passwordMatches(usernameElement.value, passwordElement.value);
+
+	if (passwordMatches) {
 		// Password is correct
 		const playerString = document.getElementById('signInWindowPlayerString').innerText;
 
