@@ -370,16 +370,18 @@ const toggleSignIn = (force, playerString) => {
 }
 
 // Checks if a username and password combination matches the records
-const passwordMatches = async (email, password) => {
+const passwordMatches = (email, password) => {
 	return new Promise(resolve => {
-		const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-		console.log(`User cred: ${userCredential}`);
+		firebase.auth().signInWithEmailAndPassword(email, password).then(userCredential => {
+			console.log(`User cred: ${userCredential}`);
 
-		await firebase.auth().signOut();
-		console.log(`Signed out`);
+			firebase.auth().signOut().then(() => {
+				console.log(`Signed out`);
 
-		if (userCredential) resolve(true);
-		else resolve(false);
+				if (userCredential) resolve(true);
+				else resolve(false);
+			});
+		});
 	});
 	// for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
 	// 	const playerArray = players[playerIdx]
@@ -389,7 +391,7 @@ const passwordMatches = async (email, password) => {
 	// return false;
 }
 
-const addPlayer = async () => {
+const addPlayer = () => {
 	const usernameElement = document.getElementById('emailInput');
 	const passwordElement = document.getElementById('passwordInput');
 	const displayNameElement = document.getElementById('displayNameInput');
