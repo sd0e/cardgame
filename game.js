@@ -372,8 +372,10 @@ const toggleSignIn = (force, playerString) => {
 // Checks if a username and password combination matches the records
 const passwordMatches = async (email, password) => {
 	const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+	console.log(`User cred: ${userCredential}`);
 
 	await firebase.auth().signOut();
+	console.log(`Signed out`);
 
 	if (userCredential) return true;
 	return false;
@@ -390,7 +392,11 @@ const addPlayer = async () => {
 	const passwordElement = document.getElementById('passwordInput');
 	const displayNameElement = document.getElementById('displayNameInput');
 
+	console.log(`Awaiting password`);
+
 	const passwordMatches = await passwordMatches(usernameElement.value, passwordElement.value);
+
+	console.log(`passwordMatches: ${passwordMatches}`);
 
 	if (passwordMatches) {
 		// Password is correct
