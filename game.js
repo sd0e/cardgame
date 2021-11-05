@@ -13,31 +13,6 @@ let playerCards = {
 	'p2': []
 };
 
-// // Defines a list of user emails and passwords
-// // (this is not intended to be secure and is a test)
-// const players = [
-// 	["player1@sebdoe.com", "12345678"],
-// 	["player2@sebdoe.com", "12345678"],
-// 	["player3@sebdoe.com", "12345678"],
-// 	["player4@sebdoe.com", "12345678"],
-// 	["player5@sebdoe.com", "12345678"],
-// 	["player6@sebdoe.com", "12345678"],
-// 	["player7@sebdoe.com", "12345678"],
-// 	["player8@sebdoe.com", "12345678"],
-// 	["player9@sebdoe.com", "12345678"],
-// 	["player10@sebdoe.com", "12345678"],
-// 	["player11@sebdoe.com", "12345678"],
-// 	["player12@sebdoe.com", "12345678"],
-// 	["player13@sebdoe.com", "12345678"],
-// 	["player14@sebdoe.com", "12345678"],
-// 	["player15@sebdoe.com", "12345678"],
-// 	["player16@sebdoe.com", "12345678"],
-// 	["player17@sebdoe.com", "12345678"],
-// 	["player18@sebdoe.com", "12345678"],
-// 	["player19@sebdoe.com", "12345678"],
-// 	["player20@sebdoe.com", "12345678"]
-// ];
-
 // Shuffles the array based on the Fisher-Yates Shuffle
 const shuffle = array => {
 	let currentIndex = array.length;
@@ -133,17 +108,13 @@ const getMostRecentPastGame = () => {
 				recentGameFound = true;
 
 				const winner = gameJSON.winner;
-				console.log(gameJSON.winner);
 
 				// Get the most recent cards for each player
 				const p1MostRecentCards = winner === 'p1' ? gameJSON.winnerCardNum : gameJSON.loserCardNum;
 				document.getElementById('player1LastRoundSecondaryCardNum').innerText = p1MostRecentCards.toString();
 
 				const p2MostRecentCards = winner === 'p2' ? gameJSON.winnerCardNum : gameJSON.loserCardNum;
-				console.log(p2MostRecentCards);
 				document.getElementById('player2LastRoundSecondaryCardNum').innerText = p2MostRecentCards.toString();
-
-				console.log(gameJSON);
 
 				const elementsToUpdate = ['player1LastRoundPrimary', 'player1LastRoundSecondary', 'player2LastRoundPrimary', 'player2LastRoundSecondary'];
 
@@ -172,12 +143,9 @@ const getMostRecentPastGame = () => {
 			element.style.display = 'none';
 		}
 	}
-
-	console.log(player1TotalWins, player2TotalWins, player1TotalWins > player2TotalWins ? 'player1' : (player1TotalWins === player2TotalWins ? 'draw' : 'player2'));
 }
 
 const newGame = () => {
-	console.log('new game called');
 	clearGame();
 
 	updateScoreReadings();
@@ -373,11 +341,7 @@ const toggleSignIn = (force, playerString) => {
 const passwordMatches = (email, password) => {
 	return new Promise(resolve => {
 		firebase.auth().signInWithEmailAndPassword(email, password).then(userCredential => {
-			console.log(`User cred: ${userCredential}`);
-
 			firebase.auth().signOut().then(() => {
-				console.log(`Signed out`);
-
 				if (userCredential) resolve(true);
 				else resolve(false);
 			});
@@ -396,11 +360,7 @@ const addPlayer = () => {
 	const passwordElement = document.getElementById('passwordInput');
 	const displayNameElement = document.getElementById('displayNameInput');
 
-	console.log(`Awaiting password`);
-
 	passwordMatches(usernameElement.value, passwordElement.value).then(passwordMatches => {
-		console.log(`passwordMatches: ${passwordMatches}`);
-
 		if (passwordMatches) {
 			// Password is correct
 			const playerString = document.getElementById('signInWindowPlayerString').innerText;
@@ -425,8 +385,6 @@ const playerRelativeScoreClass = (playerYouWant, playerToCompareTo) => {
 }
 
 const updateScoreReadings = () => {
-	console.log('update score readings called');
-
 	const player1NumberCards = playerCards['p1'].length;
 	const player2NumberCards = playerCards['p2'].length;
 
