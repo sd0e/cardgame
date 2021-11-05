@@ -15,13 +15,9 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
 	<meta name="msapplication-TileColor" content="#000000">
 	<meta name="theme-color" content="#ffffff">
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
 	<script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-	  
-		// Your web app's Firebase configuration
 		const firebaseConfig = {
 			apiKey: "AIzaSyA46ysTNmZQywuN-seLGXTotdBI-a3ZzXM",
 			authDomain: "card-game-c7ef5.firebaseapp.com",
@@ -31,8 +27,7 @@
 			appId: "1:371989515205:web:39b196287ab561b1ca99ac"
 		};
 	  
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
+		firebase.initializeApp(firebaseConfig);
 	  </script>
 	<script src="./game.js" defer></script>
 </head>
