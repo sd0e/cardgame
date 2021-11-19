@@ -219,9 +219,9 @@ const getPlayerWithHighestScore = () => {
 			}
 		}
 	}
-}
 
-getPlayerWithHighestScore();
+	return highestScores
+}
 
 // Either hides or shows everything which shows once both players are signed in, depending on if the newState is 'signedout' or not
 
@@ -568,4 +568,8 @@ const toggleLeaderboardMenu = force => {
 
 const showLeaderboard = () => {
 	toggleLeaderboardMenu('open');
+
+	const highestScores = getPlayerWithHighestScore();
+
+	console.log(highestScores);
 }
