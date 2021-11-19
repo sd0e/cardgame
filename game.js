@@ -572,9 +572,7 @@ const showLeaderboard = () => {
 	const highestScores = getPlayerWithHighestScore();
 
 	highestScores.forEach((scoreArray, scoreIdx) => {
-		console.log(scoreArray, scoreArray == [0], scoreArray === [0]);
-		
-		if (scoreArray !== [0]) {
+		if (scoreArray.toString() !== '0') {
 			const userScore = scoreArray[0];
 			const userName = scoreArray[1];
 
