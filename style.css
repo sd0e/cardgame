@@ -751,3 +751,13 @@ main {
 .currentTurn.p2 {
 	background-color: #24AA54;
 }
+
+th, td {
+	padding: 1.5rem;
+	border: 1px solid #d3d3d3;
+	text-align: left;
+}
+
+table {
+	border-spacing: 0;
+}
