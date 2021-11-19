@@ -36,6 +36,7 @@
 	<header>
 		<span class="headerTitle">Card Game</span>
 		<span class="headerContentRight">
+			<a class="headerButton" tabindex="0" type="button" href="#" onclick="showLeaderboard();">Leaderboard</a>
 			<a class="headerButton" tabindex="0" type="button" href="#" onclick="alert('Rules');">Rules</a>
 		</span>
 	</header>
@@ -44,6 +45,17 @@
 			<img src="./src/assets/SVG/CardIcon.svg" alt="Card Game Icon" class="spinningCardGameIcon" />
 			<span class="loadingCoverTitle">Card Game</span>
 			<span class="loadingCoverLoadingText">Loading...</span>
+		</div>
+	</div>
+	<div class="popupScreen" id="leaderboardMenu">
+		<div class="popupScreenHeader">
+			<a class="popupScreenBackButton" onclick="toggleLeaderboardMenu('close');" tabindex="0" type="button" href="#">
+				<span class="material-icons popupScreenBack">arrow_back</span>
+			</a>
+			<span class="popupScreenTitle">Leaderboard</span>
+		</div>
+		<div class="popupScreenInner">
+			<h1>Leaderboard</h1>
 		</div>
 	</div>
 	<div class="popupScreen" id="signInScreen">

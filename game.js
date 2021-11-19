@@ -553,3 +553,19 @@ document.getElementById('topGameCard').addEventListener('focusin', () => {
 		}, 1000);
 	}
 });
+
+const toggleLeaderboardMenu = force => {
+	// Values for `force`: 'open' or 'close'
+
+	if (force === 'close') {
+		signInPopupClasses.remove('shown');
+		signInPopupClasses.add('hidden');
+	} else {
+		signInPopupClasses.remove('hidden');
+		signInPopupClasses.add('shown');
+	}
+}
+
+const showLeaderboard = () => {
+	toggleLeaderboardMenu('open');
+}
