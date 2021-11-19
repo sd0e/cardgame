@@ -558,11 +558,11 @@ const toggleLeaderboardMenu = force => {
 	// Values for `force`: 'open' or 'close'
 
 	if (force === 'close') {
-		signInPopupClasses.remove('shown');
-		signInPopupClasses.add('hidden');
+		document.getElementById('leaderboardMenu').classList.remove('shown');
+		document.getElementById('leaderboardMenu').classList.add('hidden');
 	} else {
-		signInPopupClasses.remove('hidden');
-		signInPopupClasses.add('shown');
+		document.getElementById('leaderboardMenu').classList.remove('hidden');
+		document.getElementById('leaderboardMenu').classList.add('shown');
 	}
 }
 
