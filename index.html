@@ -106,10 +106,13 @@
 					<div class="signInScreenErrorHolder" style="display: none;" id="passwordError">
 						<span class="signInScreenError">Incorrect username or password, please try again</span>
 					</div>
-					<a class="iconButton" onclick="addPlayer();" tabindex="0" type="button" href="#">
-						<span class="iconButtonText">Sign In</span>
-						<span class="material-icons iconButtonIcon">login</span>
-					</a>
+					<div class="signInButtonHolder">
+						<span id="incorrectCombination hidden">Incorrect Combination</span>
+						<a class="iconButton" onclick="addPlayer();" tabindex="0" type="button" href="#">
+							<span class="iconButtonText">Sign In</span>
+							<span class="material-icons iconButtonIcon">login</span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

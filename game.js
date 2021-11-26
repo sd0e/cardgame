@@ -319,6 +319,7 @@ const toggleSignIn = (force, playerString) => {
 		signInPopupClasses.remove('hidden');
 		signInPopupClasses.add('shown');
 		signInWindowPlayerStringEl.innerText = playerString;
+		document.getElementById('incorrectCombination').classList.add('hidden');
 
 		if (playerString === 'Player 1') {
 			signInWindowPlayerStringEl.classList.remove('p2');
@@ -345,7 +346,7 @@ const passwordMatches = (email, password) => {
 				if (userCredential) resolve(true);
 				else resolve(false);
 			});
-		});
+		}).catch(err => resolve(false));
 	});
 	// for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
 	// 	const playerArray = players[playerIdx]
@@ -373,7 +374,7 @@ const addPlayer = () => {
 			toggleSignIn('close');
 			checkSignInStatus();
 		} else {
-			document.getElementById('passwordError').style.display = 'block';
+			document.getElementById('incorrectCombination').classList.remove('hidden');
 		}
 	});
 }

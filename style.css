@@ -512,7 +512,6 @@ main {
 	line-height: 1.2rem;
 	vertical-align: middle;
 	border-radius: 0.4rem;
-	margin-top: 1.5rem;
 	cursor: pointer;
 	transition: 0.1s ease-in-out;
 }
@@ -545,7 +544,7 @@ main {
 	border-radius: 1rem;
 }
 
-.subcontentHolder.hidden, #belowCards.hidden, #player1LastCard.hidden, #player2LastCard.hidden, #gameCards.hidden {
+.subcontentHolder.hidden, #belowCards.hidden, #player1LastCard.hidden, #player2LastCard.hidden, #gameCards.hidden, #incorrectCombination.hidden {
 	display: none;
 }
 
@@ -760,4 +759,17 @@ th, td {
 
 table {
 	border-spacing: 0;
+}
+
+.signInButtonHolder {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+#incorrectCombination {
+	font-size: 0.9rem;
+    color: #e86d64;
+    font-weight: 520;
 }
