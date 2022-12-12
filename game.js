@@ -1,5 +1,5 @@
 // Card Game
-// by Sebastian Doe (@sebastiandoe5)
+// by Sebastian Doe (@sd0e)
 
 // Formats (index starting at 0):
 // player1 and player2 array in localStorage:
